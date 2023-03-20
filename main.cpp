@@ -1,13 +1,13 @@
 //
 // Created by dias4 on 18/03/2023.
 //
-#include "setup.h"
+
 #include "iostream"
 
 using namespace std;
 
 int main(){
-    readstations();
+
     bool end = false;
     char option;
     while(!end){

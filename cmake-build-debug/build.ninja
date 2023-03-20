@@ -56,22 +56,15 @@ build CMakeFiles/Project1DA.dir/main.cpp.obj: CXX_COMPILER__Project1DA_Debug C$:
   OBJECT_DIR = CMakeFiles\Project1DA.dir
   OBJECT_FILE_DIR = CMakeFiles\Project1DA.dir
 
-build CMakeFiles/Project1DA.dir/setup.cpp.obj: CXX_COMPILER__Project1DA_Debug C$:/Users/dias4/Desktop/curso/2-ano/DA/Project1DA/setup.cpp || cmake_object_order_depends_target_Project1DA
-  DEP_FILE = CMakeFiles\Project1DA.dir\setup.cpp.obj.d
+build CMakeFiles/Project1DA.dir/Graph.cpp.obj: CXX_COMPILER__Project1DA_Debug C$:/Users/dias4/Desktop/curso/2-ano/DA/Project1DA/Graph.cpp || cmake_object_order_depends_target_Project1DA
+  DEP_FILE = CMakeFiles\Project1DA.dir\Graph.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -IC:/Users/dias4/Desktop/curso/2-ano/DA/Project1DA/.
   OBJECT_DIR = CMakeFiles\Project1DA.dir
   OBJECT_FILE_DIR = CMakeFiles\Project1DA.dir
 
-build CMakeFiles/Project1DA.dir/graph.cpp.obj: CXX_COMPILER__Project1DA_Debug C$:/Users/dias4/Desktop/curso/2-ano/DA/Project1DA/graph.cpp || cmake_object_order_depends_target_Project1DA
-  DEP_FILE = CMakeFiles\Project1DA.dir\graph.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -IC:/Users/dias4/Desktop/curso/2-ano/DA/Project1DA/.
-  OBJECT_DIR = CMakeFiles\Project1DA.dir
-  OBJECT_FILE_DIR = CMakeFiles\Project1DA.dir
-
-build CMakeFiles/Project1DA.dir/VertexEdge.cpp.obj: CXX_COMPILER__Project1DA_Debug C$:/Users/dias4/Desktop/curso/2-ano/DA/Project1DA/VertexEdge.cpp || cmake_object_order_depends_target_Project1DA
-  DEP_FILE = CMakeFiles\Project1DA.dir\VertexEdge.cpp.obj.d
+build CMakeFiles/Project1DA.dir/TrainNetwork.cpp.obj: CXX_COMPILER__Project1DA_Debug C$:/Users/dias4/Desktop/curso/2-ano/DA/Project1DA/TrainNetwork.cpp || cmake_object_order_depends_target_Project1DA
+  DEP_FILE = CMakeFiles\Project1DA.dir\TrainNetwork.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -IC:/Users/dias4/Desktop/curso/2-ano/DA/Project1DA/.
   OBJECT_DIR = CMakeFiles\Project1DA.dir
@@ -85,7 +78,7 @@ build CMakeFiles/Project1DA.dir/VertexEdge.cpp.obj: CXX_COMPILER__Project1DA_Deb
 #############################################
 # Link the executable Project1DA.exe
 
-build Project1DA.exe: CXX_EXECUTABLE_LINKER__Project1DA_Debug CMakeFiles/Project1DA.dir/main.cpp.obj CMakeFiles/Project1DA.dir/setup.cpp.obj CMakeFiles/Project1DA.dir/graph.cpp.obj CMakeFiles/Project1DA.dir/VertexEdge.cpp.obj
+build Project1DA.exe: CXX_EXECUTABLE_LINKER__Project1DA_Debug CMakeFiles/Project1DA.dir/main.cpp.obj CMakeFiles/Project1DA.dir/Graph.cpp.obj CMakeFiles/Project1DA.dir/TrainNetwork.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Project1DA.dir

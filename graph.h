@@ -1,51 +1,51 @@
-// By: Gonçalo Leão
+#ifndef _GRAPH_H_
+#define _GRAPH_H_
 
-#ifndef DA_TP_CLASSES_GRAPH
-#define DA_TP_CLASSES_GRAPH
-
-#include <iostream>
+#include "Station.h"
 #include <vector>
-#include <queue>
-#include <limits>
-#include <algorithm>
-#include "VertexEdge.h"
+#include <list>
+#include <iostream>
+#include <climits>
+
+using namespace std;
+
 
 class Graph {
+
+    struct Edge {
+        int dest;   //Destination node
+        float weight; //An integer weight
+        string  station;
+        bool operator<(const Edge& edge) const
+        {
+            return weight > edge.weight;
+        }
+    };
+
+    struct Node {
+        list<Edge> adj;     //The list of outgoing edges (to adjacent nodes)
+    };
+
+    int n;              // Graph size (vertices are numbered from 1 to n)
+    bool hasDir;        // false: undirect; true: directed
+    vector<Node> nodes;
+    vector<Station> stations;
+
 public:
-    ~Graph();
-    /*
-    * Auxiliary function to find a vertex with a given ID.
-    */
-    Vertex *findVertex(const int &id) const;
-    /*
-     *  Adds a vertex with a given content or info (in) to a graph (this).
-     *  Returns true if successful, and false if a vertex with that content already exists.
-     */
-    bool addVertex(const int &id);
 
-    /*
-     * Adds an edge to a graph (this), given the contents of the source and
-     * destination vertices and the edge weight (w).
-     * Returns true if successful, and false if the source or destination vertex does not exist.
-     */
-    bool addEdge(const int &sourc, const int &dest, double w);
-    bool addBidirectionalEdge(const int &sourc, const int &dest, double w);
+    Graph(int nodes, bool dir = false);
 
-    int getNumVertex() const;
-    std::vector<Vertex *> getVertexSet() const;
-protected:
-    std::vector<Vertex *> vertexSet;    // vertex set
+    void addEdge(int src, int dest, float weight, string& line);
 
-    double ** distMatrix = nullptr;   // dist matrix for Floyd-Warshall
-    int **pathMatrix = nullptr;   // path matrix for Floyd-Warshall
+    void BFS(int startingNode);
 
-    /*
-     * Finds the index of the vertex with a given content.
-     */
-    int findVertexIdx(const int &id) const;
+    vector<Station>& getStations();
+
+    void setStation(vector<Station>& stations);
+
+    int getStationName(string &name);
+
+    void printAdjancies(int node );
 };
 
-void deleteMatrix(int **m, int n);
-void deleteMatrix(double **m, int n);
-
-#endif /* DA_TP_CLASSES_GRAPH */
+#endif

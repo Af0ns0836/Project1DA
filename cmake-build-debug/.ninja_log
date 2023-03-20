@@ -1,12 +1,6 @@
 # ninja log v5
-1	659	7008642222513029	CMakeFiles/Project1DA.dir/main.cpp.obj	52bbce38b8f4d3a5
-6	673	7008642222665418	CMakeFiles/Project1DA.dir/setup.cpp.obj	c6a71453c0fa1e35
-10	1059	7008642226531804	CMakeFiles/Project1DA.dir/graph.cpp.obj	dfce94e14c0b3545
-16	1092	7008642226870981	CMakeFiles/Project1DA.dir/VertexEdge.cpp.obj	d2db5d94e983f706
-3	411	7008642386484190	CMakeFiles/Project1DA.dir/main.cpp.obj	52bbce38b8f4d3a5
-8	413	7008642386494598	CMakeFiles/Project1DA.dir/setup.cpp.obj	c6a71453c0fa1e35
-3	387	7008643255210343	CMakeFiles/Project1DA.dir/main.cpp.obj	52bbce38b8f4d3a5
-8	392	7008643255263115	CMakeFiles/Project1DA.dir/setup.cpp.obj	c6a71453c0fa1e35
-393	563	7008643256886952	Project1DA.exe	62b91228c8385495
 4	384	7008643422104550	CMakeFiles/Project1DA.dir/main.cpp.obj	52bbce38b8f4d3a5
 385	503	7008643423261277	Project1DA.exe	62b91228c8385495
+8	392	7008643255263115	CMakeFiles/Project1DA.dir/setup.cpp.obj	c6a71453c0fa1e35
+10	1059	7008642226531804	CMakeFiles/Project1DA.dir/graph.cpp.obj	dfce94e14c0b3545
+16	1092	7008642226870981	CMakeFiles/Project1DA.dir/VertexEdge.cpp.obj	d2db5d94e983f706

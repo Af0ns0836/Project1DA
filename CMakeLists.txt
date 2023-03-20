@@ -6,4 +6,4 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(Project1DA
-        main.cpp setup.cpp setup.h graph.cpp graph.h VertexEdge.cpp)
+        main.cpp graph.cpp graph.h Station.h TrainNetwork.h TrainNetwork.cpp)
