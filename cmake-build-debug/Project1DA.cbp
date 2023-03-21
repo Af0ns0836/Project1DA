@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Project1DA"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Project1DA">
+				<Option output="/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Project1DA" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/afonso/Desktop/School/DA/Project1DA/."/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 Project1DA"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Project1DA/fast">
+				<Option output="/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Project1DA" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/afonso/Desktop/School/DA/Project1DA/."/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 Project1DA/fast"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/Menu.cpp">
+			<Option target="Project1DA"/>
+		</Unit>
+		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/Menu.h">
+			<Option target="Project1DA"/>
+		</Unit>
+		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/MutablePriorityQueue.h">
+			<Option target="Project1DA"/>
+		</Unit>
+		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/Station.h">
+			<Option target="Project1DA"/>
+		</Unit>
+		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/TrainNetwork.cpp">
+			<Option target="Project1DA"/>
+		</Unit>
+		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/TrainNetwork.h">
+			<Option target="Project1DA"/>
+		</Unit>
+		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/VertexEdge.cpp">
+			<Option target="Project1DA"/>
+		</Unit>
+		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/VertexEdge.h">
+			<Option target="Project1DA"/>
+		</Unit>
+		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/graph.cpp">
+			<Option target="Project1DA"/>
+		</Unit>
+		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/graph.h">
+			<Option target="Project1DA"/>
+		</Unit>
+		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/main.cpp">
+			<Option target="Project1DA"/>
+		</Unit>
+		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -56,17 +56,6 @@ void TrainNetwork::readNetwork(string &line_filename, string &line_name)
     while (getline(line, next_station) && next_station != " " && next_station != "\n")
     {
 
-        curr_station_index = std::find(graph->getStations().begin(), graph->getStations().end(),8);
-
-        next_station = graph->getStationName(next_station);
-        graph->getStations().at(curr_station_index).lines.insert(line_name);
-
-        next_stop_index = g->getStopIndex(next_stop);
-        g->getStops().at(next_stop_index).lines.insert(line_code);
-
-        graph->addEdge(curr_station_index, next_station_index, distance, line_filename);
-        current_stop = next_stop;
-        current_stop_index = next_stop_index;
     }
 
 }
