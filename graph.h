@@ -1,3 +1,5 @@
+// By: Gonçalo Leão
+
 #ifndef DA_TP_CLASSES_GRAPH
 #define DA_TP_CLASSES_GRAPH
 
@@ -6,9 +8,9 @@
 #include <queue>
 #include <limits>
 #include <algorithm>
-#include "../data_structures/MutablePriorityQueue.h"
-
+#include "MutablePriorityQueue.h"
 #include "VertexEdge.h"
+#include "Station.h"
 
 class Graph {
 public:
@@ -21,7 +23,7 @@ public:
      *  Adds a vertex with a given content or info (in) to a graph (this).
      *  Returns true if successful, and false if a vertex with that content already exists.
      */
-    bool addVertex(const int &id);
+    bool addVertex(const int &id, Station station);
 
     /*
      * Adds an edge to a graph (this), given the contents of the source and

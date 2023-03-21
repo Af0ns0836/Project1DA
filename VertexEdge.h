@@ -1,10 +1,7 @@
-//
-// Created by afonso on 21-03-2023.
-//
+// By: Gonçalo Leão
 
-#ifndef PROJECT1DA_VERTEXEDGE_H
-#define PROJECT1DA_VERTEXEDGE_H
-
+#ifndef DA_TP_CLASSES_VERTEX_EDGE
+#define DA_TP_CLASSES_VERTEX_EDGE
 
 #include <iostream>
 #include <vector>
@@ -12,6 +9,7 @@
 #include <limits>
 #include <algorithm>
 #include "MutablePriorityQueue.h"
+#include "Station.h"
 
 class Edge;
 
@@ -21,7 +19,9 @@ class Edge;
 
 class Vertex {
 public:
-    Vertex(int id);
+
+    Vertex(int id, Station station);
+
     bool operator<(Vertex & vertex) const; // // required by MutablePriorityQueue
 
     int getId() const;
@@ -45,7 +45,8 @@ public:
 
     friend class MutablePriorityQueue<Vertex>;
 protected:
-    int id;                // identifier
+    int id;// identifier
+    Station station_;
     std::vector<Edge *> adj;  // outgoing edges
 
     // auxiliary fields
@@ -60,6 +61,7 @@ protected:
     int queueIndex = 0; 		// required by MutablePriorityQueue and UFDS
 
     void deleteEdge(Edge *edge);
+
 };
 
 /********************** Edge  ****************************/
@@ -92,4 +94,4 @@ protected:
     double flow; // for flow-related problems
 };
 
-#endif //PROJECT1DA_VERTEXEDGE_H
+#endif /* DA_TP_CLASSES_VERTEX_EDGE */

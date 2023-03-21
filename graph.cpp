@@ -1,45 +1,92 @@
-#include "graph.h"
-#include <queue>
-#include <algorithm>
+// By: Gonçalo Leão
 
-// Constructor: nr nodes and direction (default: undirected)
-Graph::Graph(int num, bool dir) : n(num), hasDir(dir), nodes(num + 1){}
+#include "Graph.h"
 
-// Add edge from source to destination with a certain weight
-void Graph::addEdge(int src, int dest, float weight, string &line)
-{
-    if (src < 0 || src > n - 1 || dest < 0 || dest > n - 1)
-        return;
-    nodes[src].adj.push_back({dest, weight,line});
-    if (!hasDir)
-        nodes[dest].adj.push_back({src, weight, line});
+#include <utility>
+
+int Graph::getNumVertex() const {
+    return vertexSet.size();
 }
 
-void Graph::setStation(vector<Station> &station)
-{
-    this->stations = station;
+std::vector<Vertex *> Graph::getVertexSet() const {
+    return vertexSet;
 }
 
-int Graph::getStationName(string &name) {
-    for (int i = 0; i < stations.size(); i++)
-        if (stations[i].name == name)
+/*
+ * Auxiliary function to find a vertex with a given content.
+ */
+Vertex * Graph::findVertex(const int &id) const {
+    for (auto v : vertexSet)
+        if (v->getId() == id)
+            return v;
+    return nullptr;
+}
+
+/*
+ * Finds the index of the vertex with a given content.
+ */
+int Graph::findVertexIdx(const int &id) const {
+    for (unsigned i = 0; i < vertexSet.size(); i++)
+        if (vertexSet[i]->getId() == id)
             return i;
     return -1;
 }
-
-vector<Station> &Graph::getStations() {
-    return this->stations;
+/*
+ *  Adds a vertex with a given content or info (in) to a graph (this).
+ *  Returns true if successful, and false if a vertex with that content already exists.
+ */
+bool Graph::addVertex(const int &id, Station station) {
+    if (findVertex(id) != nullptr)
+        return false;
+    vertexSet.push_back(new Vertex(id,station));
+    return true;
 }
 
+/*
+ * Adds an edge to a graph (this), given the contents of the source and
+ * destination vertices and the edge weight (w).
+ * Returns true if successful, and false if the source or destination vertex does not exist.
+ */
+bool Graph::addEdge(const int &sourc, const int &dest, double w) {
+    auto v1 = findVertex(sourc);
+    auto v2 = findVertex(dest);
+    if (v1 == nullptr || v2 == nullptr)
+        return false;
+    v1->addEdge(v2, w);
+    return true;
+}
 
-void Graph::printAdjancies(int node)
-{
-    cout << stations[node].name << " Has connections to :\n";
-    for (Edge e : nodes[node].adj)
-    {
-        cout << stations[e.dest].name << ", ";
+bool Graph::addBidirectionalEdge(const int &sourc, const int &dest, double w) {
+    auto v1 = findVertex(sourc);
+    auto v2 = findVertex(dest);
+    if (v1 == nullptr || v2 == nullptr)
+        return false;
+    auto e1 = v1->addEdge(v2, w);
+    auto e2 = v2->addEdge(v1, w);
+    e1->setReverse(e2);
+    e2->setReverse(e1);
+    return true;
+}
+
+void deleteMatrix(int **m, int n) {
+    if (m != nullptr) {
+        for (int i = 0; i < n; i++)
+            if (m[i] != nullptr)
+                delete [] m[i];
+        delete [] m;
     }
 }
 
+void deleteMatrix(double **m, int n) {
+    if (m != nullptr) {
+        for (int i = 0; i < n; i++)
+            if (m[i] != nullptr)
+                delete [] m[i];
+        delete [] m;
+    }
+}
 
-
+Graph::~Graph() {
+    deleteMatrix(distMatrix, vertexSet.size());
+    deleteMatrix(pathMatrix, vertexSet.size());
+}

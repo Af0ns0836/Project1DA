@@ -2,21 +2,15 @@
 // Created by dias4 on 20/03/2023.
 //
 #include "TrainNetwork.h"
-#include <math.h>
+#include "Station.h"
 
-TrainNetwork::TrainNetwork(){graph = nullptr;}
+TrainNetwork::TrainNetwork(){ graph = new Graph(); }
 
 void TrainNetwork::readStations(string &filename){
     vector<Station> stations;
     ifstream in(filename);
 
-    string dummy;
-
-    string name;
-    string district;
-    string municipality;
-    string township;
-    string line;
+    string name,district,municipality,township,line,dummy;
 
     getline(in, dummy);
 
@@ -31,15 +25,16 @@ void TrainNetwork::readStations(string &filename){
 
         Station station = {name, district, municipality, township, line};
         stations.push_back(station);
-
     }
-
-    graph = new Graph(stations.size(), true);
-    graph->setStation(stations);
-
+    int i = 0;
+    for(auto station : stations) {
+        getGraph()->addVertex(i,station);
+        i++;
+    }
+    in.close();
 }
 
-void TrainNetwork::readNetwork(string &line_filename, string &line_name)
+/*void TrainNetwork::readNetwork(string &line_filename, string &line_name)
 {
     int curr_station_index, next_station_index;
 
@@ -58,7 +53,7 @@ void TrainNetwork::readNetwork(string &line_filename, string &line_name)
 
     }
 
-}
+}*/
 
 Graph *TrainNetwork::getGraph(){
     return graph;

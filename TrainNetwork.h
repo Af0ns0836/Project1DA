@@ -12,6 +12,7 @@
 #include <sstream>
 #include <iostream>
 
+using namespace std;
 
 class TrainNetwork{
 
@@ -26,6 +27,7 @@ public:
     ~TrainNetwork();
 
     void readStations(string& filename);
+
     void readNetwork(string& filename ,string& name);
 
     Graph * getGraph() ;

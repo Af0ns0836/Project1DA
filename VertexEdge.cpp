@@ -1,12 +1,12 @@
-//
-// Created by afonso on 21-03-2023.
-//
+// By: Gonçalo Leão
 
 #include "VertexEdge.h"
 
+
 /************************* Vertex  **************************/
 
-Vertex::Vertex(int id): id(id) {}
+Vertex::Vertex(int id, Station station) : id(id), station_(station) {}
+
 
 /*
  * Auxiliary function to add an outgoing edge to a vertex (this),

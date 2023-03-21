@@ -12,6 +12,6 @@ using namespace std;
 void menu();
 void menu1();
 void menu2();
-void menu3()
+void menu3();
 
 #endif //PROJECT1DA_MENU_H
