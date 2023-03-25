@@ -4,14 +4,38 @@
 #include "TrainNetwork.h"
 #include "Station.h"
 
+
 TrainNetwork::TrainNetwork(){ graph = new Graph(); }
+
+void TrainNetwork::readNetwork(string &line_filename, string &line_name)
+{
+    string stationA, stationB, capacity,service;
+    ifstream linha(line_filename);
+    Line line_;
+
+    getline(linha, stationA);
+   while(linha.peek() != EOF){
+       getline(linha, stationA, linha.widen(','));
+       getline(linha, stationB, linha.widen(','));
+       getline(linha, capacity, linha.widen(','));
+       getline(linha, service, linha.widen('\n'));
+
+       line_ = {stationA, stationB,stoi(capacity),service};
+        for(int j = 0;j < graph->getNumVertex(); j++){
+            auto source = graph->stations_.find(j)->first;
+            auto dest = graph->stations_.find(source)->first;
+            if(graph->stations_[j] == stationA)
+                graph->addEdge(source,dest,line_.capacity);
+        }
+   }
+}
 
 void TrainNetwork::readStations(string &filename){
     vector<Station> stations;
     ifstream in(filename);
-
+    string file2 = "../data/network.csv", string1 = "Paulo bento";
     string name,district,municipality,township,line,dummy;
-
+    //Line lines = readNetwork(file2,string1);
     getline(in, dummy);
 
     while (in.peek() != EOF)
@@ -31,29 +55,13 @@ void TrainNetwork::readStations(string &filename){
         getGraph()->addVertex(i,station);
         i++;
     }
+    pair<int,string> p;
+    for (int i = 0; i < stations.size(); i++) {
+        p.first = i; p.second = stations[i].name;
+        graph->stations_.insert(p);
+    }
     in.close();
 }
-
-/*void TrainNetwork::readNetwork(string &line_filename, string &line_name)
-{
-    int curr_station_index, next_station_index;
-
-    string curr_station, next_station;
-    ifstream line(line_filename);
-
-    getline(line, curr_station);
-    getline(line, curr_station);
-    curr_station = graph->getStationName(curr_station);
-    if (curr_station == "")
-        return;
-
-
-    while (getline(line, next_station) && next_station != " " && next_station != "\n")
-    {
-
-    }
-
-}*/
 
 Graph *TrainNetwork::getGraph(){
     return graph;

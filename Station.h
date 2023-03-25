@@ -7,6 +7,7 @@
 
 #include <string>
 #include <unordered_set>
+#include "Line.h"
 
 using namespace std;
 
@@ -18,8 +19,6 @@ struct Station{
     string municipality;
     string Township;
     string line;
-
-    unordered_set<string> lines;
 
 };
 

@@ -10,6 +10,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 #include <iostream>
 
 using namespace std;
@@ -28,9 +29,11 @@ public:
 
     void readStations(string& filename);
 
-    void readNetwork(string& filename ,string& name);
+    void readNetwork(string &line_filename, string &line_name);
 
     Graph * getGraph() ;
+
+    vector<Line> lines_;
 
 };
 

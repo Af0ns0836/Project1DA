@@ -8,6 +8,7 @@
 #include <queue>
 #include <limits>
 #include <algorithm>
+#include <unordered_map>
 #include "MutablePriorityQueue.h"
 #include "VertexEdge.h"
 #include "Station.h"
@@ -32,9 +33,9 @@ public:
      */
     bool addEdge(const int &sourc, const int &dest, double w);
     bool addBidirectionalEdge(const int &sourc, const int &dest, double w);
-
     int getNumVertex() const;
     std::vector<Vertex *> getVertexSet() const;
+    unordered_map<int,string> stations_;
 protected:
     std::vector<Vertex *> vertexSet;    // vertex set
 
