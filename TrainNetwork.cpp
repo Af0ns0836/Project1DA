@@ -7,11 +7,12 @@
 
 TrainNetwork::TrainNetwork(){ graph = new Graph(); }
 
-void TrainNetwork::readNetwork(string &line_filename, string &line_name)
+void TrainNetwork::readNetwork(string &line_filename)
 {
     string stationA, stationB, capacity,service;
     ifstream linha(line_filename);
     Line line_;
+    int source = 0 , dest = 0;
 
     getline(linha, stationA);
    while(linha.peek() != EOF){
@@ -22,11 +23,12 @@ void TrainNetwork::readNetwork(string &line_filename, string &line_name)
 
        line_ = {stationA, stationB,stoi(capacity),service};
         for(int j = 0;j < graph->getNumVertex(); j++){
-            auto source = graph->stations_.find(j)->first;
-            auto dest = graph->stations_.find(source)->first;
             if(graph->stations_[j] == stationA)
-                graph->addEdge(source,dest,line_.capacity);
+                source = j;
+            else if(graph->stations_[j] == stationB)
+                dest = j;
         }
+       graph->addEdge(source,dest,line_.capacity,line_.service);
    }
 }
 

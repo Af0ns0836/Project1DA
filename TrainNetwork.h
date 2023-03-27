@@ -29,7 +29,7 @@ public:
 
     void readStations(string& filename);
 
-    void readNetwork(string &line_filename, string &line_name);
+    void readNetwork(string &line_filename);
 
     Graph * getGraph() ;
 

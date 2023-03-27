@@ -49,7 +49,7 @@ void menu1(){
         else if(option == '2'){
             //meter as funcoes respetivas e isso
         }
-        else if (option == '3')
+        else if (option == '3'){}
         //meter as funcoes respetivas e isso
 
     }
