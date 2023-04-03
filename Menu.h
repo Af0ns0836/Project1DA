@@ -6,12 +6,13 @@
 #define PROJECT1DA_MENU_H
 
 #include "iostream"
+#include "TrainNetwork.h"
 
 using namespace std;
 
-void menu();
-void menu1();
-void menu2();
-void menu3();
+void menu(TrainNetwork trainNetwork);
+void menu1(TrainNetwork trainNetwork);
+void menu2(TrainNetwork trainNetwork);
+void menu3(TrainNetwork trainNetwork);
 
 #endif //PROJECT1DA_MENU_H

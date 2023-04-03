@@ -36,6 +36,9 @@ public:
     int getNumVertex() const;
     std::vector<Vertex *> getVertexSet() const;
     unordered_map<int,string> stations_;
+    bool bfs(Vertex *s, Vertex *t);
+    int maxFlow(int source, int target);
+
 protected:
     std::vector<Vertex *> vertexSet;    // vertex set
 
@@ -50,5 +53,6 @@ protected:
 
 void deleteMatrix(int **m, int n);
 void deleteMatrix(double **m, int n);
+
 
 #endif /* DA_TP_CLASSES_GRAPH */

@@ -86,6 +86,86 @@ void deleteMatrix(double **m, int n) {
     }
 }
 
+///BFS | Time complexity: O(V+E)
+bool Graph::bfs(Vertex *s, Vertex *u) {
+    for(auto vert : vertexSet){
+        vert->setVisited(false);
+    }
+    ///We start off by the Source vertex
+    s->setVisited(true);
+    std::queue<Vertex *> q;
+    q.push(s);
+
+    ///While we still have neighbors to visit and the sink hasn't been reached
+    while(!q.empty() && !u->isVisited()){
+        auto u = q.front();
+        q.pop();
+        ///Looks for the neighbors of the last visited vertex
+        for(auto e : u->getAdj()){
+            ///Checks if is not visited and if the flow is enough
+            if((!e->getDest()->isVisited() && e->getWeight() - e->getFlow() > 0)){
+                ///If so, updates the last visited vertex
+                e->getDest()->setVisited(true);
+                e->getDest()->setPath(e);
+                q.push(e->getDest());
+            }
+        }
+    }
+    ///Checks if the sink vertex was reached
+    return u->isVisited();
+}
+///Edmond´s Karp | Time Complexity: O(VE^2)
+int Graph::maxFlow(int source, int target) {
+    ///Setting source&target vertex
+    Vertex *s = findVertex(source);
+    Vertex *u = findVertex(target);
+
+    ///
+    for(int i = 0; i < getNumVertex(); i++){
+        for(int j = 0; j < vertexSet[i]->getAdj().size(); j++){
+            vertexSet[i]->getAdj()[j]->setFlow(0);
+        }
+    }
+    ///Flow count
+    double max_flow = 0;
+
+    ///While there is an augmentative path
+    while (bfs(s, u)) {
+
+        double aug_flow = INF;
+
+        ///Find out the bottleneck capacity of the path
+        for(auto v = u; v != s; ){
+            auto e = v->getPath();
+            if (e->getDest() == v){
+                aug_flow = std::min(aug_flow,e->getWeight() - e->getFlow());
+                v = e->getOrig();
+            }
+            else{
+                aug_flow = std::min(aug_flow,e->getFlow());
+                v = e->getDest();
+            }
+        }
+        ///Update the flow along the augmentative path
+        for(auto v = u; v != s; ){
+            auto e = v->getPath();
+            double flow = e->getFlow();
+            if (e->getDest() == v){
+                e->setFlow(flow + aug_flow);
+                v = e->getOrig();
+            }
+            else{
+                e->setFlow(flow - aug_flow);
+                v = e->getDest();
+            }
+        }
+        ///Add the augmenting flow to the total
+        max_flow += aug_flow;
+    }
+    ///Return the max flow
+    return (int) max_flow;
+}
+
 Graph::~Graph() {
     deleteMatrix(distMatrix, vertexSet.size());
     deleteMatrix(pathMatrix, vertexSet.size());

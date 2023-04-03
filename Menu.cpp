@@ -2,9 +2,12 @@
 // Created by afonso on 21-03-2023.
 //
 
+#include <cstring>
 #include "Menu.h"
+#include "graph.h"
+#include "TrainNetwork.h"
 
-void menu(){
+void menu(TrainNetwork trainNetwork){
     bool end = false;
     char option;
     while(!end){
@@ -18,18 +21,18 @@ void menu(){
         cin >> option;
         if(option == 'q') end = true;
         else if(option == '1'){
-            menu1();
+            menu1(trainNetwork);
         }
         else if(option == '2'){
-            menu2();
+            menu2(trainNetwork);
         }
         else if(option == '3'){
-            menu3();
+            menu3(trainNetwork);
         }
     }
 }
 
-void menu1(){
+void menu1(TrainNetwork tN){
     bool end = false;
     char option;
     while(!end){
@@ -45,9 +48,11 @@ void menu1(){
         if(option == 'q') end = true;
         else if(option == '1'){
             //meter as funcoes respetivas e isso
+
         }
-        else if(option == '2'){
+        else if(option == '2') {
             //meter as funcoes respetivas e isso
+
         }
         else if (option == '3'){}
         //meter as funcoes respetivas e isso
@@ -55,10 +60,48 @@ void menu1(){
     }
 }
 
-void menu2(){
+void menu2(TrainNetwork tN){
 //meter as funcoes respetivas e isso
+
 }
 
-void menu3(){
+void menu3(TrainNetwork tN){
 //meter as funcoes respetivas e isso
+
+    bool end = false;
+    char option;
+    while(!end) {
+        cout << "#############################" << endl;
+        cout << "#           Menu 3          #" << endl;
+        cout << "#############################" << endl;
+        cout
+                << "1.Maximum number of trains that can simultaneously travel between two specific stations in a network of reduced connectivity"
+                << endl;
+        cout << "2.Stations that are most affected by each segment fail" << endl;
+        cout << "Enter the respective number or q to return to the main menu: ";
+        cin >> option;
+        if (option == 'q') end = true;
+        else if (option == '1') {
+            string source, sink;
+            int s, t;
+            cout << "Source: ";
+            cin >> source;
+            cout << "Sink: ";
+            cin >> sink;
+            for (auto e: tN.getGraph()->stations_) {
+                if (source == e.second) {
+                    s = e.first;
+                }
+                if (sink == e.second) {
+                    t = e.first;
+                }
+            }
+            cout << "Max flow = " << tN.getGraph()->maxFlow(s, t) << endl;
+            return;
+
+        } else if (option == '2') {
+            //meter as funcoes respetivas e isso
+
+        }
+    }
 }

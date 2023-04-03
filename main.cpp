@@ -7,9 +7,9 @@
 
 int main(){
     TrainNetwork trainNetwork = TrainNetwork();
-    string file = "../data/stations.csv", file2 = "../data/network.csv";
+    string file = "../data/stations2.csv", file2 = "../data/network2.csv";
     trainNetwork.readStations(file);
     trainNetwork.readNetwork(file2);
-    menu();
+    menu(trainNetwork);
     return 0;
 }
