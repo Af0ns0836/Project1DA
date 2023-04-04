@@ -5,7 +5,7 @@
 #ifndef PROJECT1DA_TRAINNETWORK_H
 #define PROJECT1DA_TRAINNETWORK_H
 
-#include "graph.h"
+#include "Graph.h"
 #include <vector>
 #include <string>
 #include <fstream>
@@ -35,6 +35,9 @@ public:
 
     vector<Line> lines_;
 
+    bool compareStations(const pair<string, int>& a, const pair<string, int>& b);
+
+    void SortStations(int k);
 };
 
 #endif //PROJECT1DA_TRAINNETWORK_H

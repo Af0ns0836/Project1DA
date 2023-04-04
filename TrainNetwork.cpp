@@ -1,6 +1,7 @@
 //
 // Created by dias4 on 20/03/2023.
 //
+#include <functional>
 #include "TrainNetwork.h"
 #include "Station.h"
 
@@ -63,6 +64,23 @@ void TrainNetwork::readStations(string &filename){
         graph->stations_.insert(p);
     }
     in.close();
+}
+
+bool TrainNetwork::compareStations(const pair<string,int>& a, const pair<string,int>& b){
+    return a.second > b.second;
+}
+
+void TrainNetwork::SortStations(int k) {
+    vector<pair<string,int>> nodes;
+    auto vertex =  graph->getVertexSet();
+    for(unsigned int i = 0; i < vertex.size(); i++){
+        nodes.push_back(make_pair(vertex[i]->getStation().municipality,vertex[i]->getAdj().size()));
+    }
+    sort(nodes.begin(), nodes.end(), bind(&TrainNetwork::compareStations, this, placeholders::_1, placeholders::_2));
+    cout << "The top " << k << " municipalities are" << endl;
+    for(int j = 0; j < k ; j++){
+        cout << nodes[j].first << endl;
+    }
 }
 
 Graph *TrainNetwork::getGraph(){

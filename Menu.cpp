@@ -4,7 +4,7 @@
 
 #include <cstring>
 #include "Menu.h"
-#include "graph.h"
+#include "Graph.h"
 #include "TrainNetwork.h"
 
 void menu(TrainNetwork trainNetwork){
@@ -54,7 +54,12 @@ void menu1(TrainNetwork tN){
             //meter as funcoes respetivas e isso
 
         }
-        else if (option == '3'){}
+        else if (option == '3'){
+            int k = 0;
+            cout << "Enter how many stations do you want to see: ";
+            cin >> k;
+            tN.SortStations(k);
+        }
         //meter as funcoes respetivas e isso
 
     }

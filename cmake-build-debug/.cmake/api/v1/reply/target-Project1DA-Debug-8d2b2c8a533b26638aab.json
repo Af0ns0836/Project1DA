@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Project1DA.exe"
-		},
-		{
-			"path" : "Project1DA.pdb"
+			"path" : "Project1DA"
 		}
 	],
 	"backtrace" : 1,
@@ -55,7 +52,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "C:/Users/dias4/Desktop/curso/2-ano/DA/Project1DA/."
+					"path" : "/home/afonso/Desktop/School/DA/Project1DA/."
 				}
 			],
 			"language" : "CXX",
@@ -89,16 +86,12 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "Project1DA",
-	"nameOnDisk" : "Project1DA.exe",
+	"nameOnDisk" : "Project1DA",
 	"paths" : 
 	{
 		"build" : ".",

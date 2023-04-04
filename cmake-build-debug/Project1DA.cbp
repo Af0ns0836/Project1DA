@@ -84,6 +84,15 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/Graph.cpp">
+			<Option target="Project1DA"/>
+		</Unit>
+		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/Graph.h">
+			<Option target="Project1DA"/>
+		</Unit>
+		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/Line.h">
+			<Option target="Project1DA"/>
+		</Unit>
 		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/Menu.cpp">
 			<Option target="Project1DA"/>
 		</Unit>
@@ -106,12 +115,6 @@
 			<Option target="Project1DA"/>
 		</Unit>
 		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/VertexEdge.h">
-			<Option target="Project1DA"/>
-		</Unit>
-		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/graph.cpp">
-			<Option target="Project1DA"/>
-		</Unit>
-		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/graph.h">
 			<Option target="Project1DA"/>
 		</Unit>
 		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/main.cpp">

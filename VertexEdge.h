@@ -42,6 +42,7 @@ public:
     Edge * addEdge(Vertex *dest, double , string service);
     bool removeEdge(int destID);
     void removeOutgoingEdges();
+    Station getStation() const;
 
     friend class MutablePriorityQueue<Vertex>;
 protected:
@@ -61,6 +62,7 @@ protected:
     int queueIndex = 0; 		// required by MutablePriorityQueue and UFDS
 
     void deleteEdge(Edge *edge);
+
 
 };
 
