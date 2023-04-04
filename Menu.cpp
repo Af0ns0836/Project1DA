@@ -67,7 +67,27 @@ void menu1(TrainNetwork tN){
 
         }
         else if(option == '2') {
-            //meter as funcoes respetivas e isso
+            ///Function that computes maximum num of trains between all pairs of stations | Time complexity: O(V^3E^2)
+            vector<pair<Vertex*,Vertex*>> sts;
+            vector<int> capacities;
+            int max_trains = tN.getGraph()->getVertexSet()[0]->getAdj()[0]->getWeight();
+            for(int i = 0; i < tN.getGraph()->getNumVertex(); i++){
+                for(int j = i+1; j < tN.getGraph()->getNumVertex(); j++){
+                    int cap = tN.getGraph()->maxFlow(tN.getGraph()->getVertexSet()[i]->getId(), tN.getGraph()->getVertexSet()[j]->getId());
+                    if(cap >= max_trains){
+                        max_trains = cap;
+                        pair<Vertex*,Vertex*> p(tN.getGraph()->getVertexSet()[i],tN.getGraph()->getVertexSet()[j]);
+                        sts.push_back(p);
+                        capacities.push_back(cap);
+                    }
+                }
+            }
+            cout << "\nThe station/s that require more trains\nCapacity: " << max_trains << endl;
+            for(int i = 0; i < sts.size(); i++){
+                if(capacities[i] == max_trains){
+                    cout << sts[i].first->getStation().name << " --> " << sts[i].second->getStation().name << endl;
+                }
+            }
 
         }
         else if (option == '3'){
