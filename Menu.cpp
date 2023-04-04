@@ -39,7 +39,7 @@ void menu1(TrainNetwork tN){
         cout << "#############################" << endl;
         cout << "#           Menu 1          #" << endl;
         cout << "#############################" << endl;
-        cout << "1.Number of trains between two specific stations" << endl;
+        cout << "1.Max number of trains between two specific stations" << endl;
         cout << "2.Stations that require the most amount of trains" << endl;
         cout << "3.Top-k municipalities and distritcs that are assigned larged budgets" << endl;
         cout << "4.Maximum number of trains that can simultaneously arrive at a given station" << endl;
@@ -47,7 +47,23 @@ void menu1(TrainNetwork tN){
         cin >> option;
         if(option == 'q') end = true;
         else if(option == '1'){
-            //meter as funcoes respetivas e isso
+            string source, sink;
+            int s, t;
+            cout << "Source: ";
+            cin.ignore(); getline(cin, source, '\n');
+            cout << "Destination: ";
+            getline(cin, sink, '\n');
+            for (auto e: tN.getGraph()->stations_) {
+                if (source == e.second) {
+                    s = e.first;
+                }
+                if (sink == e.second) {
+                    t = e.first;
+                }
+            }
+            cout << "Max flow = " << tN.getGraph()->maxFlow(s, t) << endl;
+
+            return;
 
         }
         else if(option == '2') {
