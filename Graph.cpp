@@ -56,7 +56,7 @@ bool Graph::addEdge(const int &sourc, const int &dest, double w, string service)
     return true;
 }
 
-/*bool Graph::addBidirectionalEdge(const int &sourc, const int &dest, double w) {
+bool Graph::addBidirectionalEdge(const int &sourc, const int &dest, double w,string service) {
     auto v1 = findVertex(sourc);
     auto v2 = findVertex(dest);
     if (v1 == nullptr || v2 == nullptr)
@@ -66,7 +66,7 @@ bool Graph::addEdge(const int &sourc, const int &dest, double w, string service)
     e1->setReverse(e2);
     e2->setReverse(e1);
     return true;
-}*/
+}
 
 void deleteMatrix(int **m, int n) {
     if (m != nullptr) {
@@ -127,7 +127,8 @@ int Graph::maxFlow(int source, int target) {
         }
     }
     ///Flow count
-    double max_flow = 0;
+    double max_flow = 0, cost = 0;
+
 
     ///While there is an augmentative path
     while (bfs(s, u)) {
@@ -161,10 +162,50 @@ int Graph::maxFlow(int source, int target) {
         }
         ///Add the augmenting flow to the total
         max_flow += aug_flow;
+
     }
     ///Return the max flow
     return (int) max_flow;
 }
+int Graph::minCost(int source, int target) {
+        // Find source and target vertices
+        Vertex* s = findVertex(source);
+        Vertex* t = findVertex(target);
+
+        // Initialize flow and cost to zero
+        double max_flow = 0.0;
+        double total_cost = 0.0;
+
+        // While there is an augmenting path from s to t
+        while (bfs(s, t)) {
+            // Compute bottleneck capacity of the augmenting path
+            double bottleneck = INF;
+            for (Vertex* v = t; v != s; v = v->getPath()->getReverse()->getDest()) {
+                Edge* e = v->getPath();
+                double residual = e->getWeight() - e->getFlow();
+                bottleneck = std::min(bottleneck, residual);
+            }
+
+            // Update flow and cost along the augmenting path
+            for (Vertex* v = t; v != s; v = v->getPath()->getReverse()->getDest()) {
+                Edge* e = v->getPath();
+                if (e->getDest() == v) {
+                    e->addFlow(bottleneck);
+                    total_cost += e->getCost() * bottleneck;
+                } else {
+                    e->addFlow(bottleneck);
+                    total_cost -= e->getCost() * bottleneck;
+                }
+            }
+
+            // Add augmenting flow to total flow
+            max_flow += bottleneck;
+        }
+
+        // Return total cost
+        return total_cost;
+}
+
 
 Graph::~Graph() {
     deleteMatrix(distMatrix, vertexSet.size());

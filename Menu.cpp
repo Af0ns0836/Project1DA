@@ -17,7 +17,8 @@ void menu(TrainNetwork trainNetwork){
         cout << "1.Basic Service Metrics" << endl;
         cout << "2.Operation Cost Optimization" << endl;
         cout << "3.Reliability and Sensitivity to Line Failures" << endl;
-        cout << "Enter the respective number or q to terminate the program: ";
+        cout << "Enter q to terminate the program or to return to a previous menu: ";
+        cout << "Enter the respective number: ";
         cin >> option;
         if(option == 'q') end = true;
         else if(option == '1'){
@@ -41,9 +42,9 @@ void menu1(TrainNetwork tN){
         cout << "#############################" << endl;
         cout << "1.Max number of trains between two specific stations" << endl;
         cout << "2.Stations that require the most amount of trains" << endl;
-        cout << "3.Top-k municipalities and distritcs that are assigned larged budgets" << endl;
+        cout << "3.Top-k municipalities and districts that are assigned large budgets" << endl;
         cout << "4.Maximum number of trains that can simultaneously arrive at a given station" << endl;
-        cout << "Enter the respective number or q to return to the main menu: ";
+        cout << "Enter the respective number: ";
         cin >> option;
         if(option == 'q') end = true;
         else if(option == '1'){
@@ -103,6 +104,25 @@ void menu1(TrainNetwork tN){
 
 void menu2(TrainNetwork tN){
 //meter as funcoes respetivas e isso
+    string source, sink;
+    int s, t;
+    cout << "#############################" << endl;
+    cout << "#           Menu 2          #" << endl;
+    cout << "#############################" << endl;
+    cout << "Source: ";
+    cin.ignore(); getline(cin, source, '\n');
+    cout << "Destination: ";
+    getline(cin, sink, '\n');
+    for (auto e: tN.getGraph()->stations_) {
+        if (source == e.second) {
+            s = e.first;
+        }
+        if (sink == e.second) {
+            t = e.first;
+        }
+    }
+    cout << "The minimal cost between " << source << " and " << sink << " is " << tN.getGraph()->minCost(s, t) << endl;
+
 
 }
 

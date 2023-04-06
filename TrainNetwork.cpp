@@ -29,7 +29,7 @@ void TrainNetwork::readNetwork(string &line_filename)
             else if(graph->stations_[j] == stationB)
                 dest = j;
         }
-       graph->addEdge(source,dest,line_.capacity,line_.service);
+       graph->addBidirectionalEdge(source,dest,line_.capacity,line_.service);
    }
 }
 

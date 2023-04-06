@@ -74,14 +74,6 @@ bool Vertex::isVisited() const {
     return this->visited;
 }
 
-bool Vertex::isProcessing() const {
-    return this->processing;
-}
-
-unsigned int Vertex::getIndegree() const {
-    return this->indegree;
-}
-
 double Vertex::getDist() const {
     return this->dist;
 }
@@ -175,4 +167,14 @@ void Edge::setReverse(Edge *reverse) {
 
 void Edge::setFlow(double flow) {
     this->flow = flow;
+}
+
+void Edge::addFlow(double flow) {
+    this->flow += flow;
+}
+
+double Edge::getCost() {
+    if(this->getService() == "Standard") return 2;
+    else
+        return 4;
 }

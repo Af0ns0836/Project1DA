@@ -32,12 +32,13 @@ public:
      * Returns true if successful, and false if the source or destination vertex does not exist.
      */
     bool addEdge(const int &sourc, const int &dest, double w, string service);
-    bool addBidirectionalEdge(const int &sourc, const int &dest, double w);
+    bool addBidirectionalEdge(const int &sourc, const int &dest, double w, string service);
     int getNumVertex() const;
     std::vector<Vertex *> getVertexSet() const;
     unordered_map<int,string> stations_;
     bool bfs(Vertex *s, Vertex *t);
     int maxFlow(int source, int target);
+    int minCost(int source, int target);
 
 protected:
     std::vector<Vertex *> vertexSet;    // vertex set
@@ -49,6 +50,7 @@ protected:
      * Finds the index of the vertex with a given content.
      */
     int findVertexIdx(const int &id) const;
+
 };
 
 void deleteMatrix(int **m, int n);

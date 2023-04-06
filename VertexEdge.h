@@ -82,6 +82,10 @@ public:
     void setSelected(bool selected);
     void setReverse(Edge *reverse);
     void setFlow(double flow);
+    void addFlow(double flow);
+
+    double getCost();
+
 protected:
     Vertex * dest; // destination vertex
     double weight; // edge weight, can also be used for capacity
@@ -97,6 +101,7 @@ protected:
     string getService() const;
 
     string service;
+
 };
 
 #endif /* DA_TP_CLASSES_VERTEX_EDGE */
