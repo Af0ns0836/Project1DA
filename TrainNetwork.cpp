@@ -93,6 +93,7 @@ void TrainNetwork::menu(){
         cout << "1.Basic Service Metrics" << endl;
         cout << "2.Operation Cost Optimization" << endl;
         cout << "3.Reliability and Sensitivity to Line Failures" << endl;
+        cout << "4.Load Dataset" << endl;
         cout << "Enter q to terminate the program or to return to a previous menu" << endl;
         cout << "Enter the respective number: ";
         cin >> option;
@@ -105,6 +106,9 @@ void TrainNetwork::menu(){
         }
         else if(option == '3'){
             menu3();
+        }
+        else if (option == '4') {
+            menu4();
         }
     }
 }
@@ -241,6 +245,48 @@ void TrainNetwork::menu3(){
         }
     }
 }
+
+void TrainNetwork::menu4() {
+    string stations, network;
+    bool end = false;
+    char option;
+    while (!end) {
+        cout << "#############################" << endl;
+        cout << "#           Menu 4          #" << endl;
+        cout << "#############################" << endl;
+        cout << "1.Load Data from preset" << endl;
+        cout << "2.Load Data from my own dataset" << endl;
+        cout << "Enter the respective number or q to return to the main menu: ";
+        cin >> option;
+        if (option == 'q') {
+            end = true;
+        }
+        else if (option == '1') {
+            stations = "../data/stations.csv";
+            network = "../data/network.csv";
+            readStations(stations);
+            readNetwork(network);
+            return;
+        }
+        else if (option == '2') {
+            string stationsPath = "../data/";
+            string networkPath = "../data/";
+            cout << "Stations file name (extention included): ";
+            cin.ignore(); getline(cin, stations, '\n');
+            cout << "Network file name (extention included): ";
+            cin.ignore(); getline(cin, network, '\n');
+
+            stationsPath.append(stations);
+            networkPath.append(network);
+
+            this->readStations(stationsPath);
+            this->readNetwork(networkPath);
+
+            return;
+        }
+    }
+}
+
 
 Graph *TrainNetwork::getGraph(){
     return graph;
