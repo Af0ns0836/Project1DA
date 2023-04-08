@@ -153,30 +153,6 @@ Graph.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1DA.dir/build.make CMakeFiles/Project1DA.dir/Graph.cpp.s
 .PHONY : Graph.cpp.s
 
-Menu.o: Menu.cpp.o
-.PHONY : Menu.o
-
-# target to build an object file
-Menu.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1DA.dir/build.make CMakeFiles/Project1DA.dir/Menu.cpp.o
-.PHONY : Menu.cpp.o
-
-Menu.i: Menu.cpp.i
-.PHONY : Menu.i
-
-# target to preprocess a source file
-Menu.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1DA.dir/build.make CMakeFiles/Project1DA.dir/Menu.cpp.i
-.PHONY : Menu.cpp.i
-
-Menu.s: Menu.cpp.s
-.PHONY : Menu.s
-
-# target to generate assembly for a file
-Menu.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1DA.dir/build.make CMakeFiles/Project1DA.dir/Menu.cpp.s
-.PHONY : Menu.cpp.s
-
 TrainNetwork.o: TrainNetwork.cpp.o
 .PHONY : TrainNetwork.o
 
@@ -261,9 +237,6 @@ help:
 	@echo "... Graph.o"
 	@echo "... Graph.i"
 	@echo "... Graph.s"
-	@echo "... Menu.o"
-	@echo "... Menu.i"
-	@echo "... Menu.s"
 	@echo "... TrainNetwork.o"
 	@echo "... TrainNetwork.i"
 	@echo "... TrainNetwork.s"

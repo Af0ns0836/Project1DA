@@ -27,6 +27,11 @@ public:
 
     ~TrainNetwork();
 
+    void menu();
+    void menu1();
+    void menu2();
+    void menu3();
+
     void readStations(string& filename);
 
     void readNetwork(string &line_filename);

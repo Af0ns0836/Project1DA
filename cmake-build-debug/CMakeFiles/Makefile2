@@ -81,12 +81,12 @@ clean: CMakeFiles/Project1DA.dir/clean
 CMakeFiles/Project1DA.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1DA.dir/build.make CMakeFiles/Project1DA.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1DA.dir/build.make CMakeFiles/Project1DA.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target Project1DA"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target Project1DA"
 .PHONY : CMakeFiles/Project1DA.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Project1DA.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Project1DA.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/afonso/Desktop/School/DA/Project1DA/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/Project1DA.dir/rule

@@ -93,12 +93,6 @@
 		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/Line.h">
 			<Option target="Project1DA"/>
 		</Unit>
-		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/Menu.cpp">
-			<Option target="Project1DA"/>
-		</Unit>
-		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/Menu.h">
-			<Option target="Project1DA"/>
-		</Unit>
 		<Unit filename="/home/afonso/Desktop/School/DA/Project1DA/MutablePriorityQueue.h">
 			<Option target="Project1DA"/>
 		</Unit>

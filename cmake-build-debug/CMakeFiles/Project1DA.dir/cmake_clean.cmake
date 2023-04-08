@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Project1DA.dir/Graph.cpp.o"
   "CMakeFiles/Project1DA.dir/Graph.cpp.o.d"
-  "CMakeFiles/Project1DA.dir/Menu.cpp.o"
-  "CMakeFiles/Project1DA.dir/Menu.cpp.o.d"
   "CMakeFiles/Project1DA.dir/TrainNetwork.cpp.o"
   "CMakeFiles/Project1DA.dir/TrainNetwork.cpp.o.d"
   "CMakeFiles/Project1DA.dir/VertexEdge.cpp.o"
