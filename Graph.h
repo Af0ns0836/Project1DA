@@ -39,6 +39,11 @@ public:
     bool bfs(Vertex *s, Vertex *t);
     int maxFlow(int source, int target);
     int minCost(int source, int target);
+    void testAndVisit(queue<Vertex *> &q, Edge *e, Vertex *w, double residual);
+    bool findAugmentingPath(Vertex *s, Vertex *t);
+    void augmentFlowAlongPath(Vertex *s, Vertex *t, double f);
+    double findMinResidualAlongPath(Vertex *s, Vertex *t);
+    void edmondsKarp(int source, int target);
 
 protected:
     std::vector<Vertex *> vertexSet;    // vertex set

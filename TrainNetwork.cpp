@@ -142,7 +142,7 @@ void TrainNetwork::menu1(){
                     t = e.first;
                 }
             }
-            cout << "Max flow = " << getGraph()->maxFlow(s, t) << endl;
+            cout << "Max flow = " << getGraph()->maxFlow(s,t) << endl;
 
             return;
 
