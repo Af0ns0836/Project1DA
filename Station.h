@@ -19,7 +19,9 @@ struct Station{
     string municipality;
     string Township;
     string line;
-
+    bool operator<(const Station& other) const {
+        return name < other.name;
+    }
 };
 
 

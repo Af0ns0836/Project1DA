@@ -2,6 +2,7 @@
 // Created by dias4 on 20/03/2023.
 //
 #include <functional>
+#include <set>
 #include "TrainNetwork.h"
 #include "Station.h"
 
@@ -35,10 +36,9 @@ void TrainNetwork::readNetwork(string &line_filename)
 
 void TrainNetwork::readStations(string &filename){
     vector<Station> stations;
+    set<Station> unique_stations;
     ifstream in(filename);
-    string file2 = "../data/network.csv", string1 = "Paulo bento";
     string name,district,municipality,township,line,dummy;
-    //Line lines = readNetwork(file2,string1);
     getline(in, dummy);
 
     while (in.peek() != EOF)
@@ -51,8 +51,12 @@ void TrainNetwork::readStations(string &filename){
         getline(in, line, in.widen('\n'));
 
         Station station = {name, district, municipality, township, line};
-        stations.push_back(station);
+        auto [it, success] = unique_stations.insert(station);
+        if (success) {
+            stations.push_back(station);
+        }
     }
+
     int i = 0;
     for(auto station : stations) {
         getGraph()->addVertex(i,station);
