@@ -25,7 +25,6 @@ public:
      *  Returns true if successful, and false if a vertex with that content already exists.
      */
     bool addVertex(const int &id, Station station);
-
     /*
      * Adds an edge to a graph (this), given the contents of the source and
      * destination vertices and the edge weight (w).
@@ -44,13 +43,13 @@ public:
     void augmentFlowAlongPath(Vertex *s, Vertex *t, double f);
     double findMinResidualAlongPath(Vertex *s, Vertex *t);
     void edmondsKarp(int source, int target);
+    int ReducedConnectityGraphFlow(vector<string> stRemove, int source, int target);
+    bool removeVertex(const int &id);
 
 protected:
     std::vector<Vertex *> vertexSet;    // vertex set
-
     double ** distMatrix = nullptr;   // dist matrix for Floyd-Warshall
     int **pathMatrix = nullptr;   // path matrix for Floyd-Warshall
-
     /*
      * Finds the index of the vertex with a given content.
      */

@@ -122,7 +122,7 @@ void TrainNetwork::menu1(){
     char option;
     while(!end){
         cout << "#############################" << endl;
-        cout << "#           Menu 1          #" << endl;
+        cout << "#   Basic Service Metrics   #" << endl;
         cout << "#############################" << endl;
         cout << "1.Max number of trains between two specific stations" << endl;
         cout << "2.Stations that require the most amount of trains" << endl;
@@ -191,7 +191,7 @@ void TrainNetwork::menu2(){
     string source, sink;
     int s, t;
     cout << "#############################" << endl;
-    cout << "#           Menu 2          #" << endl;
+    cout << "#Operation Cost Optimization#" << endl;
     cout << "#############################" << endl;
     cout << "Source: ";
     cin.ignore(); getline(cin, source, '\n');
@@ -216,20 +216,31 @@ void TrainNetwork::menu3(){
     bool end = false;
     char option;
     while(!end) {
-        cout << "#############################" << endl;
-        cout << "#           Menu 3          #" << endl;
-        cout << "#############################" << endl;
-        cout << "1.Maximum number of trains that can simultaneously travel between two specific stations in a network of reduced connectivity"
-        << endl;
+        cout << "################################################" << endl;
+        cout << "# Reliability and Sensitivity to Line Failures #" << endl;
+        cout << "################################################" << endl;
+        cout << "1.Maximum number of trains that can simultaneously travel between two specific stations in a network of reduced connectivity"<< endl;
         cout << "2.Stations that are most affected by each segment fail" << endl;
         cout << "Enter the respective number or q to return to the main menu: ";
         cin >> option;
         if (option == 'q') end = true;
         else if (option == '1') {
+            vector<string> removeS;
+            string stationR;
+            bool d = true;
+            int f = 0;
+            cout << "When you are done removing stations enter d " << endl;
+            cin.ignore();
+            while(d){
+                cout << "Input a station to remove: ";
+                getline(cin, stationR, '\n');
+                if(stationR == "d") d = false;
+                removeS.push_back(stationR);
+            }
             string source, sink;
             int s, t;
             cout << "Source: ";
-            cin.ignore(); getline(cin, source, '\n');
+            getline(cin, source, '\n');
             cout << "Sink: ";
             getline(cin, sink, '\n');
             for (auto e: getGraph()->stations_) {
@@ -240,7 +251,8 @@ void TrainNetwork::menu3(){
                     t = e.first;
                 }
             }
-            cout << "Max flow = " << getGraph()->maxFlow(s, t) << endl;
+            cout << "The max flow in the reduced connectivity graph is: " << getGraph()->ReducedConnectityGraphFlow(removeS,s,t) << endl;
+            cout << "If you want to use the original graph choose Load Dataset from the main menu and proceed to load the data from there" << endl;
             return;
 
         } else if (option == '2') {
@@ -256,7 +268,7 @@ void TrainNetwork::menu4() {
     char option;
     while (!end) {
         cout << "#############################" << endl;
-        cout << "#           Menu 4          #" << endl;
+        cout << "#        Load Dataset       #" << endl;
         cout << "#############################" << endl;
         cout << "1.Load Data from preset" << endl;
         cout << "2.Load Data from my own dataset" << endl;

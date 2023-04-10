@@ -206,47 +206,41 @@ int Graph::maxFlow(int source, int target) {
     return flow;
 }
 int Graph::minCost(int source, int target) {
-        // Find source and target vertices
-        Vertex* s = findVertex(source);
-        Vertex* t = findVertex(target);
 
-        // Initialize flow and cost to zero
-        double max_flow = 0.0;
-        double total_cost = 0.0;
-
-        // While there is an augmenting path from s to t
-        while (bfs(s, t)) {
-            // Compute bottleneck capacity of the augmenting path
-            double bottleneck = INF;
-            for (Vertex* v = t; v != s; v = v->getPath()->getReverse()->getDest()) {
-                Edge* e = v->getPath();
-                double residual = e->getWeight() - e->getFlow();
-                bottleneck = std::min(bottleneck, residual);
-            }
-
-            // Update flow and cost along the augmenting path
-            for (Vertex* v = t; v != s; v = v->getPath()->getReverse()->getDest()) {
-                Edge* e = v->getPath();
-                if (e->getDest() == v) {
-                    e->addFlow(bottleneck);
-                    total_cost += e->getCost() * bottleneck;
-                } else {
-                    e->addFlow(bottleneck);
-                    total_cost -= e->getCost() * bottleneck;
-                }
-            }
-
-            // Add augmenting flow to total flow
-            max_flow += bottleneck;
-        }
-
-        // Return total cost
-        return total_cost;
 }
+
 
 
 Graph::~Graph() {
     deleteMatrix(distMatrix, vertexSet.size());
     deleteMatrix(pathMatrix, vertexSet.size());
+}
+
+int Graph::ReducedConnectityGraphFlow(vector<string> stRemove, int source, int target) {
+    int s = 0, res = 0;
+    for(auto st : stRemove){
+        for (auto e: stations_) {
+            if(st == e.second) s = e.first;
+        }
+        removeVertex(s);
+    }
+    res = maxFlow(source,target);
+    return res;
+}
+
+bool Graph::removeVertex(const int &id) {
+    for (auto it = vertexSet.begin(); it != vertexSet.end(); it++) {
+        if ((*it)->getId() == id) {
+            auto v = *it;
+            v->removeOutgoingEdges();
+            for (auto u : vertexSet) {
+                u->removeEdge(v->getId());
+            }
+            vertexSet.erase(it);
+            delete v;
+            return true;
+        }
+    }
+    return false;
 }
 
