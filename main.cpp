@@ -4,12 +4,10 @@
 
 
 #include "TrainNetwork.h"
+#include "Menu.h"
 
 int main(){
-    TrainNetwork tN= TrainNetwork();
-    string stations = "../data/stations.csv", network = "../data/network.csv";
-    tN.readStations(stations);
-    tN.readNetwork(network);
-    tN.menu();
+    Menu menu;
+    menu.menu();
     return 0;
 }

@@ -27,17 +27,13 @@ public:
 
     ~TrainNetwork();
 
-    void menu();
-    void menu1();
-    void menu2();
-    void menu3();
-    void menu4();
-
     void readStations(string& filename);
 
     void readNetwork(string &line_filename);
 
     Graph * getGraph() ;
+
+    void setGraph(Graph *graph);
 
     vector<Line> lines_;
 
