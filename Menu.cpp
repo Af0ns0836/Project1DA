@@ -109,7 +109,7 @@ void Menu::menu1(TrainNetwork *tn){
 }
 
 void Menu::menu2(TrainNetwork *tn){
-//meter as funcoes respetivas e isso
+    pair<int,int> res;
     string source, sink;
     int s, t;
     cout << "#############################" << endl;
@@ -127,7 +127,8 @@ void Menu::menu2(TrainNetwork *tn){
             t = e.first;
         }
     }
-    cout << "The minimal cost between " << source << " and " << sink << " is " << tn->getGraph()->minCost(s, t) << endl;
+    res = tn->getGraph()->minCost(s, t);
+    cout << "The minimal cost between " << source << " and " << sink << " is " << res.second << " and has a max flow of " << res.first << endl;
 
 
 }

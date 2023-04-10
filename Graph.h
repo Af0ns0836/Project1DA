@@ -37,7 +37,7 @@ public:
     unordered_map<int,string> stations_;
     bool bfs(Vertex *s, Vertex *t);
     int maxFlow(int source, int target);
-    int minCost(int source, int target);
+    pair<int,int> minCost(int source, int target);
     void testAndVisit(queue<Vertex *> &q, Edge *e, Vertex *w, double residual);
     bool findAugmentingPath(Vertex *s, Vertex *t);
     void augmentFlowAlongPath(Vertex *s, Vertex *t, double f);
@@ -45,6 +45,10 @@ public:
     void edmondsKarp(int source, int target);
     int ReducedConnectityGraphFlow(vector<string> stRemove, int source, int target);
     bool removeVertex(const int &id);
+    int findBottleneck(Vertex *src) const;
+    bool findCheapestPath(Vertex *source, Vertex *target);
+    void augmentFlow(Vertex* dest, int flow) const;
+    void resetNodes() const;
 
 protected:
     std::vector<Vertex *> vertexSet;    // vertex set
@@ -54,7 +58,6 @@ protected:
      * Finds the index of the vertex with a given content.
      */
     int findVertexIdx(const int &id) const;
-
 };
 
 void deleteMatrix(int **m, int n);

@@ -127,10 +127,29 @@ void Graph::augmentFlowAlongPath(Vertex *s, Vertex *t, double f) {
     }
 }
 
+int Graph::findBottleneck(Vertex* s) const {
+    int cap = numeric_limits<int>::max();
+    int tmp;
+    auto v = s;
+    auto e = v->getPath();
+
+    while (e != nullptr) {
+        tmp = e->getOrig() == v ? e->getFlow() : e->getWeight() - e->getFlow() - e->getReverse()->getFlow();
+
+        if (tmp < cap)
+            cap = tmp;
+
+        v = e->getOrig() == v ? e->getDest() : e->getOrig();
+
+        e = v->getPath();
+    }
+
+    return cap;
+}
+
 void Graph::edmondsKarp(int source, int target) {
     Vertex* s = findVertex(source);
     Vertex* t = findVertex(target);
-    int maxflow = 0;
     if (s == nullptr || t == nullptr || s == t)
         throw std::logic_error("Invalid source and/or target vertex");
 
@@ -143,7 +162,6 @@ void Graph::edmondsKarp(int source, int target) {
     // Loop to find augmentation paths
     while( findAugmentingPath(s, t) ) {
         double f = findMinResidualAlongPath(s, t);
-        maxflow += f;
         augmentFlowAlongPath(s, t, f);
     }
 }
@@ -166,38 +184,8 @@ void deleteMatrix(double **m, int n) {
     }
 }
 
-///BFS | Time complexity: O(V+E)
-bool Graph::bfs(Vertex *s, Vertex *u) {
-    for(auto vert : vertexSet){
-        vert->setVisited(false);
-    }
-    ///We start off by the Source vertex
-    s->setVisited(true);
-    std::queue<Vertex *> q;
-    q.push(s);
-
-    ///While we still have neighbors to visit and the sink hasn't been reached
-    while(!q.empty() && !u->isVisited()){
-        auto u = q.front();
-        q.pop();
-        ///Looks for the neighbors of the last visited vertex
-        for(auto e : u->getAdj()){
-            ///Checks if is not visited and if the flow is enough
-            if((!e->getDest()->isVisited() && e->getWeight() - e->getFlow() > 0)){
-                ///If so, updates the last visited vertex
-                e->getDest()->setVisited(true);
-                e->getDest()->setPath(e);
-                q.push(e->getDest());
-            }
-        }
-    }
-    ///Checks if the sink vertex was reached
-    return u->isVisited();
-}
-///Edmond´s Karp | Time Complexity: O(VE^2)
 int Graph::maxFlow(int source, int target) {
     ///Setting source&target vertex
-    Vertex *s = findVertex(source);
     Vertex *u = findVertex(target);
     ///
     edmondsKarp(source, target);
@@ -205,10 +193,51 @@ int Graph::maxFlow(int source, int target) {
     for (auto e : u->getIncoming() ) flow += e->getFlow();
     return flow;
 }
-int Graph::minCost(int source, int target) {
+pair<int,int> Graph::minCost(int source, int target) {
+    int minCost = 0, maxFlow = 0;
+    for (auto v : vertexSet) {
+        for (auto e: v->getAdj()) {
+            e->setFlow(0);
+            //e->setVisited(false);
+        }
+    }
+    pair<int,int> p;
+    Vertex *s = findVertex(source);
+    Vertex *u = findVertex(target);
+    while (findCheapestPath(s, u)){
+        int flow = findBottleneck(u);
+        augmentFlow(u, flow);
+    }
+    queue<Vertex *> q;
 
+    s->setVisited(true);
+    q.push(s);
+    Vertex *currNode;
+
+    while (!q.empty()) {
+        currNode = q.front();
+
+        for (Edge *e: currNode->getAdj()) {
+            Vertex *destNode = e->getDest();
+
+            if (e->getFlow() > 0 && !e->getVisited()) {
+                if (!destNode->isVisited()) {
+                    q.push(destNode);
+                    destNode->setVisited(true);
+                }
+                minCost += e->getFlow() * e->getServiceCost();
+                e->setVisited(true);
+            }
+        }
+
+        q.pop();
+    }
+    for (Edge *e: u->getIncoming()) {
+        maxFlow += e->getFlow();
+    }
+    p = {maxFlow,minCost};
+    return p;
 }
-
 
 
 Graph::~Graph() {
@@ -244,3 +273,63 @@ bool Graph::removeVertex(const int &id) {
     return false;
 }
 
+bool Graph::findCheapestPath(Vertex *source, Vertex *target) {
+    resetNodes();
+    source->setCost(0);
+
+    for (int i = 0; i < getVertexSet().size(); i++) {
+        for (auto v: getVertexSet()) {
+            Vertex *orig = v;
+
+            for (Edge *e: orig->getAdj()) {
+                Vertex *adjNode = e->getDest();
+                Edge *reverse = e->getReverse();
+
+                bool relaxEdge = adjNode->getCost() > orig->getCost() + e->getServiceCost();
+                bool isNotFull = e->getWeight() > e->getFlow() + reverse->getFlow();
+
+                if (relaxEdge && isNotFull) {
+                    adjNode->setCost(orig->getCost() + e->getServiceCost());
+                    adjNode->setPath(e);
+                }
+            }
+
+            for (Edge *e: orig->getIncoming()) {
+                Vertex *adjNode = e->getOrig();
+
+                bool relaxEdge = adjNode->getCost() > orig->getCost() - e->getServiceCost();
+
+                if (e->getFlow() > 0 && relaxEdge) {
+                    adjNode->setCost(orig->getCost() - e->getServiceCost());
+                    adjNode->setPath(e);
+                }
+            }
+        }
+    }
+
+    return target->getPath() != nullptr;
+}
+void Graph::augmentFlow(Vertex* dest, int flow) const {
+    auto v = dest;
+    auto e = v->getPath();
+
+    while (e != nullptr) {
+        e->getOrig() == v ? e->setFlow(e->getFlow() - flow) : e->setFlow(e->getFlow() + flow);
+
+        v = e->getOrig() == v ? e->getDest() : e->getOrig();
+
+        e = v->getPath();
+    }
+}
+
+void Graph::resetNodes() const {
+    for (auto v: getVertexSet()) {
+        v->setVisited(false);
+        v->setPath(nullptr);
+        v->setCost(100000);
+
+        for (Edge *e: v->getAdj()) {
+            e->setVisited(false);
+        }
+    }
+}

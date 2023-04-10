@@ -74,9 +74,6 @@ bool Vertex::isVisited() const {
     return this->visited;
 }
 
-double Vertex::getDist() const {
-    return this->dist;
-}
 
 Edge *Vertex::getPath() const {
     return this->path;
@@ -86,24 +83,15 @@ std::vector<Edge *> Vertex::getIncoming() const {
     return this->incoming;
 }
 
-void Vertex::setId(int id) {
-    this->id = id;
+void Vertex::setCost(int cost) {
+    this->cost = cost;
+}
+int Vertex::getCost() const {
+    return cost;
 }
 
 void Vertex::setVisited(bool visited) {
     this->visited = visited;
-}
-
-void Vertex::setProcesssing(bool processing) {
-    this->processing = processing;
-}
-
-void Vertex::setIndegree(unsigned int indegree) {
-    this->indegree = indegree;
-}
-
-void Vertex::setDist(double dist) {
-    this->dist = dist;
 }
 
 void Vertex::setPath(Edge *path) {
@@ -173,8 +161,16 @@ void Edge::addFlow(double flow) {
     this->flow += flow;
 }
 
-double Edge::getCost() {
+int Edge::getServiceCost() const {
     if(this->getService() == "Standard") return 2;
     else
         return 4;
+}
+
+bool Edge::getVisited() const {
+    return visited;
+}
+
+void Edge::setVisited(bool visited) {
+    this->visited = visited;
 }
