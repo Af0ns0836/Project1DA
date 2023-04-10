@@ -1,13 +1,12 @@
-//
-// Created by gonca on 4/10/2023.
-//
-
 #ifndef PROJECT1DA_MENU_H
 #define PROJECT1DA_MENU_H
 
 
 #include "TrainNetwork.h"
-
+/**
+ * @brief Menu Class
+ * @paragraph This class represents represents the menus and calls all the other important functions. Everything works from a menu!
+ */
 class Menu {
 public:
     void menu();

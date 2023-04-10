@@ -1,9 +1,11 @@
-//
-// Created by gonca on 4/10/2023.
-//
-
 #include "Menu.h"
 
+/**
+ * @brief Menu::menu
+ * This is the menu constructor.
+ * Before displaying the menu, the data is parsed from the main dataset and a TrainNetwork object is created with all the data.
+ * Here, in the main runs the main loop for the program. Inside it, there are the calls for the secondary menus.
+ */
 void Menu::menu(){
     string stations = "../data/stations.csv", network = "../data/network.csv";
     TrainNetwork tn = TrainNetwork();
@@ -39,6 +41,12 @@ void Menu::menu(){
     }
 }
 
+/**
+ * @brief Menu::menu1
+ * This is the menu that displays the "Basic Service Metrics" options.
+ * Here, the functions maxFlow and maxTrains are called.
+ * @param tn
+ */
 void Menu::menu1(TrainNetwork *tn){
     bool end = false;
     char option;
@@ -74,28 +82,12 @@ void Menu::menu1(TrainNetwork *tn){
 
         }
         else if(option == '2') {
-            ///Function that computes maximum num of trains between all pairs of stations | Time complexity: O(V^3E^2)
-            vector<pair<Vertex*,Vertex*>> sts;
-            vector<int> capacities;
-            int max_trains = tn->getGraph()->getVertexSet()[0]->getAdj()[0]->getWeight();
-            for(int i = 0; i < tn->getGraph()->getNumVertex(); i++){
-                for(int j = i+1; j < tn->getGraph()->getNumVertex(); j++){
-                    int cap = tn->getGraph()->maxFlow(tn->getGraph()->getVertexSet()[i]->getId(), tn->getGraph()->getVertexSet()[j]->getId());
-                    if(cap >= max_trains){
-                        max_trains = cap;
-                        pair<Vertex*,Vertex*> p(tn->getGraph()->getVertexSet()[i],tn->getGraph()->getVertexSet()[j]);
-                        sts.push_back(p);
-                        capacities.push_back(cap);
-                    }
-                }
-            }
+            vector<pair<Vertex*,Vertex*>> edges;
+            int max_trains = tn->getGraph()->maxTrains(&edges);
             cout << "\nThe station/s that require more trains\nCapacity: " << max_trains << endl;
-            for(int i = 0; i < sts.size(); i++){
-                if(capacities[i] == max_trains){
-                    cout << sts[i].first->getStation().name << " --> " << sts[i].second->getStation().name << endl;
-                }
+            for(auto e : edges){
+                cout << e.first->getStation().name << " --> " << e.second->getStation().name << endl;
             }
-
         }
         else if (option == '3'){
             int k = 0;
@@ -103,13 +95,16 @@ void Menu::menu1(TrainNetwork *tn){
             cin >> k;
             tn->SortStations(k);
         }
-        //meter as funcoes respetivas e isso
-
     }
 }
 
+/**
+ * @brief Menu::menu2
+ * This is the menu that displays the "Operation Cost Optimization" options.
+ * Here, the function minCost is called.
+ * @param tn
+ */
 void Menu::menu2(TrainNetwork *tn){
-//meter as funcoes respetivas e isso
     string source, sink;
     int s, t;
     cout << "#############################" << endl;
@@ -132,6 +127,12 @@ void Menu::menu2(TrainNetwork *tn){
 
 }
 
+/**
+ * @brief Menu::menu3
+ * This is the menu that displays the "Reliability and Sensitivity to Line Failures" options.
+ * Here, the function ReducedConnectityGraphFlow is called.
+ * @param tn
+ */
 void Menu::menu3(TrainNetwork *tn){
 //meter as funcoes respetivas e isso
 
@@ -139,7 +140,7 @@ void Menu::menu3(TrainNetwork *tn){
     char option;
     while(!end) {
         cout << "################################################" << endl;
-        cout << "# Reliability and Sensitivity to Line Failures #" << endl;
+        cout << "# Reliability and Sensitivity to Line Failures# " << endl;
         cout << "################################################" << endl;
         cout << "1.Maximum number of trains that can simultaneously travel between two specific stations in a network of reduced connectivity"<< endl;
         cout << "2.Stations that are most affected by each segment fail" << endl;
@@ -178,12 +179,17 @@ void Menu::menu3(TrainNetwork *tn){
             return;
 
         } else if (option == '2') {
-            //meter as funcoes respetivas e isso
-
+            break;
         }
     }
 }
 
+/**
+ * @brief Menu::menu4
+ * This is the menu that displays the "Load Dataset" options.
+ * Here, the functions readStations and readNetwork are called, so that the graphs can be re-built according to the dataset requested by the user.
+ * @param tn
+ */
 void Menu::menu4(TrainNetwork *tn) {
     string stations, network;
     bool end = false;

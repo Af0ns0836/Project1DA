@@ -1,7 +1,3 @@
-//
-// Created by dias4 on 20/03/2023.
-//
-
 #ifndef PROJECT1DA_TRAINNETWORK_H
 #define PROJECT1DA_TRAINNETWORK_H
 
@@ -15,6 +11,10 @@
 
 using namespace std;
 
+/**
+ * @brief The TrainNetwork class
+ * Class that represents a Train Network using a graph.
+ */
 class TrainNetwork{
 
 private:

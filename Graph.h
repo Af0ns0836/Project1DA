@@ -12,7 +12,10 @@
 #include "MutablePriorityQueue.h"
 #include "VertexEdge.h"
 #include "Station.h"
-
+/**
+ * @brief The Graph class
+ * This class represents the graph data structure
+ */
 class Graph {
 public:
     ~Graph();
@@ -45,6 +48,7 @@ public:
     void edmondsKarp(int source, int target);
     int ReducedConnectityGraphFlow(vector<string> stRemove, int source, int target);
     bool removeVertex(const int &id);
+    int maxTrains(vector<pair<Vertex*,Vertex*>> *edges);
 
 protected:
     std::vector<Vertex *> vertexSet;    // vertex set

@@ -1,7 +1,3 @@
-//
-// Created by dias4 on 25/03/2023.
-//
-
 #ifndef PROJECT1DA_LINE_H
 #define PROJECT1DA_LINE_H
 

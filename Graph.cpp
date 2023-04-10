@@ -3,17 +3,25 @@
 #include "Graph.h"
 
 #include <utility>
-
+/**
+ * Returns the size of vertexSet
+ * @return Size of vertexSet
+ */
 int Graph::getNumVertex() const {
     return vertexSet.size();
 }
-
+/**
+ * Returns the vertexSet
+ * @return VertexSet
+ */
 std::vector<Vertex *> Graph::getVertexSet() const {
     return vertexSet;
 }
 
-/*
+/**
  * Auxiliary function to find a vertex with a given content.
+ * @param id - The desired id of the vertex
+ * @return Vertex with desired id
  */
 Vertex * Graph::findVertex(const int &id) const {
     for (auto v : vertexSet)
@@ -22,8 +30,10 @@ Vertex * Graph::findVertex(const int &id) const {
     return nullptr;
 }
 
-/*
+/**
  * Finds the index of the vertex with a given content.
+ * @param id - The desired id of the vertex
+ * @return Index of the vertex with desired id
  */
 int Graph::findVertexIdx(const int &id) const {
     for (unsigned i = 0; i < vertexSet.size(); i++)
@@ -31,9 +41,11 @@ int Graph::findVertexIdx(const int &id) const {
             return i;
     return -1;
 }
-/*
+/**
  *  Adds a vertex with a given content or info (in) to a graph (this).
- *  Returns true if successful, and false if a vertex with that content already exists.
+ *  @param id - The desired id of the vertex
+ *  @param station - The desired station of the vertex
+ *  @return True if the vertex was added, false if it already exists
  */
 bool Graph::addVertex(const int &id, Station station) {
     if (findVertex(id) != nullptr)
@@ -42,10 +54,13 @@ bool Graph::addVertex(const int &id, Station station) {
     return true;
 }
 
-/*
- * Adds an edge to a graph (this), given the contents of the source and
- * destination vertices and the edge weight (w).
- * Returns true if successful, and false if the source or destination vertex does not exist.
+/**
+ * Adds an edge to a graph (this), given the contents of the source and destination vertices and the edge weight (w).
+ * @param sourc - The desired id of the source vertex
+ * @param dest - The desired id of the destination vertex
+ * @param w - The desired weight of the edge
+ * @param service - The desired service of the edge
+ * @return True if the edge was added, false if the source or destination vertices do not exist
  */
 bool Graph::addEdge(const int &sourc, const int &dest, double w, string service) {
     auto v1 = findVertex(sourc);
@@ -56,6 +71,14 @@ bool Graph::addEdge(const int &sourc, const int &dest, double w, string service)
     return true;
 }
 
+/**
+ * Adds a bidirectional edge to a graph (this), given the contents of the source and destination vertices and the edge weight (w).
+ * @param sourc - The desired id of the source vertex
+ * @param dest - The desired id of the destination vertex
+ * @param w - The desired weight of the edge
+ * @param service - The desired service of the edge
+ * @return True if the edge was added, false if the source or destination vertices do not exist
+ */
 bool Graph::addBidirectionalEdge(const int &sourc, const int &dest, double w,string service) {
     auto v1 = findVertex(sourc);
     auto v2 = findVertex(dest);
@@ -68,6 +91,42 @@ bool Graph::addBidirectionalEdge(const int &sourc, const int &dest, double w,str
     return true;
 }
 
+/**
+ * Finds the maximum number of trains between all pairs of stations.
+ * Complexity: O(V^3E^2)
+ * @param edges - Vector of pairs of vertices used to return the edges that support the maximum number of trains
+ * @return Maximum number of trains
+ */
+int Graph::maxTrains(vector<pair<Vertex*,Vertex*>> *edges) {
+    vector<pair<Vertex*,Vertex*>> sts;
+    vector<int> capacities;
+    int max_trains = vertexSet[0]->getAdj()[0]->getWeight();
+    for(int i = 0; i < getNumVertex(); i++){
+        for(int j = i+1; j < getNumVertex(); j++){
+            int cap = maxFlow(vertexSet[i]->getId(), vertexSet[j]->getId());
+            if(cap >= max_trains){
+                max_trains = cap;
+                pair<Vertex*,Vertex*> p(vertexSet[i],vertexSet[j]);
+                sts.push_back(p);
+                capacities.push_back(cap);
+            }
+        }
+    }
+    for(int i = 0; i < sts.size(); i++){
+        if(capacities[i] == max_trains){
+            edges->push_back(sts[i]);
+        }
+    }
+    return max_trains;
+}
+
+/**
+ * Tests if a vertex is reachable from another vertex - if it is, visits it.
+ * @param q - Queue of vertices
+ * @param e - Next vertex
+ * @param w - Current vertex
+ * @param residual - Residual capacity
+ */
 void Graph::testAndVisit(std::queue< Vertex*> &q, Edge *e, Vertex *w, double residual) {
     if (! w->isVisited() && residual > 0) {
         w->setVisited(true);
@@ -76,6 +135,12 @@ void Graph::testAndVisit(std::queue< Vertex*> &q, Edge *e, Vertex *w, double res
     }
 }
 
+/**
+ * Finds the augmenting path between two vertices.
+ * @param s - Source vertex
+ * @param t - Destination vertex
+ * @return True if it reaches the sink vertex, false otherwise
+ */
 bool Graph::findAugmentingPath(Vertex *s, Vertex *t) {
     for(auto v : vertexSet) {
         v->setVisited(false);
@@ -96,6 +161,12 @@ bool Graph::findAugmentingPath(Vertex *s, Vertex *t) {
     return t->isVisited();
 }
 
+/**
+ * Finds the minimum residual capacity along the augmenting path.
+ * @param s - Source vertex
+ * @param t - Destination vertex
+ * @return Minimum residual capacity
+ */
 double Graph::findMinResidualAlongPath(Vertex *s, Vertex *t) {
     double f = INF;
     for (auto v = t; v != s; ) {
@@ -112,6 +183,12 @@ double Graph::findMinResidualAlongPath(Vertex *s, Vertex *t) {
     return f;
 }
 
+/**
+ * Augments the flow along the augmenting path.
+ * @param s - Source vertex
+ * @param t - Destination vertex
+ * @param f - Flow to be augmented
+ */
 void Graph::augmentFlowAlongPath(Vertex *s, Vertex *t, double f) {
     for (auto v = t; v != s; ) {
         auto e = v->getPath();
@@ -127,6 +204,11 @@ void Graph::augmentFlowAlongPath(Vertex *s, Vertex *t, double f) {
     }
 }
 
+/**
+ * Sets the flow along the path from source to sink.
+ * @param source - Source vertex
+ * @param target - Destination vertex
+ */
 void Graph::edmondsKarp(int source, int target) {
     Vertex* s = findVertex(source);
     Vertex* t = findVertex(target);
@@ -148,6 +230,7 @@ void Graph::edmondsKarp(int source, int target) {
     }
 }
 
+
 void deleteMatrix(int **m, int n) {
     if (m != nullptr) {
         for (int i = 0; i < n; i++)
@@ -166,7 +249,13 @@ void deleteMatrix(double **m, int n) {
     }
 }
 
-///BFS | Time complexity: O(V+E)
+/**
+ * Executes a Breath-First Search on the graph.
+ * Complexity: O(V+E)
+ * @param s - Source vertex
+ * @param u - Sink vertex
+ * @return True if the sink is reachable from the source, false otherwise
+ */
 bool Graph::bfs(Vertex *s, Vertex *u) {
     for(auto vert : vertexSet){
         vert->setVisited(false);
@@ -194,7 +283,14 @@ bool Graph::bfs(Vertex *s, Vertex *u) {
     ///Checks if the sink vertex was reached
     return u->isVisited();
 }
-///Edmond´s Karp | Time Complexity: O(VE^2)
+
+/**
+ * Uses Edmond's Karp algorithm to find the maximum flow between two vertices.
+ * Complexity: O(VE^2)
+ * @param source - Source vertex
+ * @param target - Destination vertex (Sink)
+ * @return Maximum flow
+ */
 int Graph::maxFlow(int source, int target) {
     ///Setting source&target vertex
     Vertex *s = findVertex(source);
@@ -205,17 +301,35 @@ int Graph::maxFlow(int source, int target) {
     for (auto e : u->getIncoming() ) flow += e->getFlow();
     return flow;
 }
+
+/**
+ * Finds the minimum cost to travel between two vertices.
+ * Complexity: ?
+ * @param source - Source vertex
+ * @param target - Destination vertex
+ * @return Minimum cost flow
+ */
 int Graph::minCost(int source, int target) {
 
 }
 
 
-
+/**
+ * Deletes the graph
+ */
 Graph::~Graph() {
     deleteMatrix(distMatrix, vertexSet.size());
     deleteMatrix(pathMatrix, vertexSet.size());
 }
 
+/**
+ * Uses Edmond's Karp algorithm to find the maximum flow between two vertices on the subgraph after removing the desired vertices/edges.
+ * Complexity: O(VE^2)
+ * @param stRemove - Vector of stations to be removed
+ * @param source - Source vertex
+ * @param target - Destination vertex (Sink)
+ * @return Maximum flow
+ */
 int Graph::ReducedConnectityGraphFlow(vector<string> stRemove, int source, int target) {
     int s = 0, res = 0;
     for(auto st : stRemove){
@@ -228,6 +342,11 @@ int Graph::ReducedConnectityGraphFlow(vector<string> stRemove, int source, int t
     return res;
 }
 
+/**
+ * Removes a vertex from the graph.
+ * @param id - ID of the vertex to be removed
+ * @return Returns true if the vertex was removed, false otherwise
+ */
 bool Graph::removeVertex(const int &id) {
     for (auto it = vertexSet.begin(); it != vertexSet.end(); it++) {
         if ((*it)->getId() == id) {
