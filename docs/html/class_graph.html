@@ -104,8 +104,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aae43b89d0e2946dc5ead6c32e68dcb61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7902f8f8a5ef7cc0319afcc95af0b1a4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a7902f8f8a5ef7cc0319afcc95af0b1a4">maxFlow</a> (int source, int target)</td></tr>
 <tr class="separator:a7902f8f8a5ef7cc0319afcc95af0b1a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95e4fc836ea15984157cfcffaaa8371d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a95e4fc836ea15984157cfcffaaa8371d">minCost</a> (int source, int target)</td></tr>
-<tr class="separator:a95e4fc836ea15984157cfcffaaa8371d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7069bc3f4f3d353a7ba1ddcc20347e12"><td class="memItemLeft" align="right" valign="top">pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a7069bc3f4f3d353a7ba1ddcc20347e12">minCost</a> (int source, int target)</td></tr>
+<tr class="separator:a7069bc3f4f3d353a7ba1ddcc20347e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8878bb542af827afe6ad3ae1c5ac309f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a8878bb542af827afe6ad3ae1c5ac309f">testAndVisit</a> (queue&lt; <a class="el" href="class_vertex.html">Vertex</a> * &gt; &amp;q, <a class="el" href="class_edge.html">Edge</a> *e, <a class="el" href="class_vertex.html">Vertex</a> *w, double residual)</td></tr>
 <tr class="separator:a8878bb542af827afe6ad3ae1c5ac309f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b5af5d9fba5bac37ed469fa3d8e5f1b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a3b5af5d9fba5bac37ed469fa3d8e5f1b">findAugmentingPath</a> (<a class="el" href="class_vertex.html">Vertex</a> *s, <a class="el" href="class_vertex.html">Vertex</a> *t)</td></tr>
@@ -120,6 +120,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a62baac2776ec9258913aef674f37dbc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a697561b2a2c1b25147b1750b250c1fdf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a697561b2a2c1b25147b1750b250c1fdf">removeVertex</a> (const int &amp;id)</td></tr>
 <tr class="separator:a697561b2a2c1b25147b1750b250c1fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae95b60da5ad3d77975bab91186254db5"><td class="memItemLeft" align="right" valign="top"><a id="ae95b60da5ad3d77975bab91186254db5" name="ae95b60da5ad3d77975bab91186254db5"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>findBottleneck</b> (<a class="el" href="class_vertex.html">Vertex</a> *src) const</td></tr>
+<tr class="separator:ae95b60da5ad3d77975bab91186254db5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd0d13f4574619b72c2a7a3dd0942478"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#abd0d13f4574619b72c2a7a3dd0942478">findCheapestPath</a> (<a class="el" href="class_vertex.html">Vertex</a> *source, <a class="el" href="class_vertex.html">Vertex</a> *target)</td></tr>
+<tr class="separator:abd0d13f4574619b72c2a7a3dd0942478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedd3dd3c2a979f1e0c75fc3e8278a2e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#aedd3dd3c2a979f1e0c75fc3e8278a2e2">augmentFlow</a> (<a class="el" href="class_vertex.html">Vertex</a> *dest, int flow) const</td></tr>
+<tr class="separator:aedd3dd3c2a979f1e0c75fc3e8278a2e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad65e67fb2bd7bb504dd3880dd52ec903"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#ad65e67fb2bd7bb504dd3880dd52ec903">resetNodes</a> () const</td></tr>
+<tr class="separator:ad65e67fb2bd7bb504dd3880dd52ec903"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8effce6bfa93a6442e074e85d0d6d4a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#ae8effce6bfa93a6442e074e85d0d6d4a">maxTrains</a> (vector&lt; pair&lt; <a class="el" href="class_vertex.html">Vertex</a> *, <a class="el" href="class_vertex.html">Vertex</a> * &gt; &gt; *edges)</td></tr>
 <tr class="separator:ae8effce6bfa93a6442e074e85d0d6d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -304,6 +313,41 @@ int **&#160;</td><td class="memItemRight" valign="bottom"><b>pathMatrix</b> = nu
 
 </div>
 </div>
+<a id="aedd3dd3c2a979f1e0c75fc3e8278a2e2" name="aedd3dd3c2a979f1e0c75fc3e8278a2e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedd3dd3c2a979f1e0c75fc3e8278a2e2">&#9670;&#160;</a></span>augmentFlow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::augmentFlow </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a> *&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>flow</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Augments the flow along the a vertex's path </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dest</td><td>- Destination vertex </td></tr>
+    <tr><td class="paramname">flow</td><td>- Flow to be augmented </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a1e4cb3533098748b7e67bb8c941a59b3" name="a1e4cb3533098748b7e67bb8c941a59b3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1e4cb3533098748b7e67bb8c941a59b3">&#9670;&#160;</a></span>augmentFlowAlongPath()</h2>
 
@@ -456,6 +500,42 @@ int **&#160;</td><td class="memItemRight" valign="bottom"><b>pathMatrix</b> = nu
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if it reaches the sink vertex, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="abd0d13f4574619b72c2a7a3dd0942478" name="abd0d13f4574619b72c2a7a3dd0942478"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd0d13f4574619b72c2a7a3dd0942478">&#9670;&#160;</a></span>findCheapestPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Graph::findCheapestPath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a> *&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a> *&#160;</td>
+          <td class="paramname"><em>target</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Finds the chepeast path between two vertices. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>- Source vertex </td></tr>
+    <tr><td class="paramname">target</td><td>- Destination vertex </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the target vertex was reached, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -651,14 +731,14 @@ int **&#160;</td><td class="memItemRight" valign="bottom"><b>pathMatrix</b> = nu
 
 </div>
 </div>
-<a id="a95e4fc836ea15984157cfcffaaa8371d" name="a95e4fc836ea15984157cfcffaaa8371d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95e4fc836ea15984157cfcffaaa8371d">&#9670;&#160;</a></span>minCost()</h2>
+<a id="a7069bc3f4f3d353a7ba1ddcc20347e12" name="a7069bc3f4f3d353a7ba1ddcc20347e12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7069bc3f4f3d353a7ba1ddcc20347e12">&#9670;&#160;</a></span>minCost()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Graph::minCost </td>
+          <td class="memname">pair&lt; int, int &gt; Graph::minCost </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>source</em>, </td>
@@ -676,7 +756,7 @@ int **&#160;</td><td class="memItemRight" valign="bottom"><b>pathMatrix</b> = nu
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Finds the minimum cost to travel between two vertices. Complexity: ? </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Finds the minimum cost to travel between two vertices. Complexity: O(E log(V)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">source</td><td>- Source vertex </td></tr>
     <tr><td class="paramname">target</td><td>- Destination vertex </td></tr>
@@ -755,6 +835,24 @@ int **&#160;</td><td class="memItemRight" valign="bottom"><b>pathMatrix</b> = nu
 
 </div>
 </div>
+<a id="ad65e67fb2bd7bb504dd3880dd52ec903" name="ad65e67fb2bd7bb504dd3880dd52ec903"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad65e67fb2bd7bb504dd3880dd52ec903">&#9670;&#160;</a></span>resetNodes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::resetNodes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Resets the nodes' visited, path and cost values. </p>
+
+</div>
+</div>
 <a id="a8878bb542af827afe6ad3ae1c5ac309f" name="a8878bb542af827afe6ad3ae1c5ac309f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8878bb542af827afe6ad3ae1c5ac309f">&#9670;&#160;</a></span>testAndVisit()</h2>
 
@@ -805,8 +903,8 @@ int **&#160;</td><td class="memItemRight" valign="bottom"><b>pathMatrix</b> = nu
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="_graph_8h_source.html">Graph.h</a></li>
-<li>Graph.cpp</li>
+<li>da/Project1DA/<a class="el" href="_graph_8h_source.html">Graph.h</a></li>
+<li>da/Project1DA/Graph.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

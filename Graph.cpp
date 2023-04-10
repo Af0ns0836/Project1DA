@@ -325,7 +325,7 @@ int Graph::maxFlow(int source, int target) {
 }
 /**
  * Finds the minimum cost to travel between two vertices.
- * Complexity: ?
+ * Complexity: O(E log(V))
  * @param source - Source vertex
  * @param target - Destination vertex
  * @return Minimum cost flow
@@ -427,6 +427,12 @@ bool Graph::removeVertex(const int &id) {
     return false;
 }
 
+/**
+ * Finds the chepeast path between two vertices.
+ * @param source - Source vertex
+ * @param target - Destination vertex
+ * @return True if the target vertex was reached, false otherwise
+ */
 bool Graph::findCheapestPath(Vertex *source, Vertex *target) {
     resetNodes();
     source->setCost(0);
@@ -463,6 +469,12 @@ bool Graph::findCheapestPath(Vertex *source, Vertex *target) {
 
     return target->getPath() != nullptr;
 }
+
+/**
+ * Augments the flow along the a vertex's path
+ * @param dest - Destination vertex
+ * @param flow - Flow to be augmented
+ */
 void Graph::augmentFlow(Vertex* dest, int flow) const {
     auto v = dest;
     auto e = v->getPath();
@@ -476,6 +488,9 @@ void Graph::augmentFlow(Vertex* dest, int flow) const {
     }
 }
 
+/**
+ * Resets the nodes' visited, path and cost values.
+ */
 void Graph::resetNodes() const {
     for (auto v: getVertexSet()) {
         v->setVisited(false);
