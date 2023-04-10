@@ -12,7 +12,10 @@
 #include "MutablePriorityQueue.h"
 #include "VertexEdge.h"
 #include "Station.h"
-
+/**
+ * @brief The Graph class
+ * This class represents the graph data structure
+ */
 class Graph {
 public:
     ~Graph();
@@ -49,6 +52,8 @@ public:
     bool findCheapestPath(Vertex *source, Vertex *target);
     void augmentFlow(Vertex* dest, int flow) const;
     void resetNodes() const;
+    int maxTrains(vector<pair<Vertex*,Vertex*>> *edges);
+
 
 protected:
     std::vector<Vertex *> vertexSet;    // vertex set

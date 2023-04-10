@@ -1,7 +1,3 @@
-//
-// Created by dias4 on 20/03/2023.
-//
-
 #ifndef PROJECT1DA_STATION_H
 #define PROJECT1DA_STATION_H
 
@@ -11,7 +7,15 @@
 
 using namespace std;
 
-
+/**
+ * @brief Station Struct
+ * @paragraph This struct represents a Train station.
+ * @param name - Station's name
+ * @param district - Station's district
+ * @param municipality - Station's municipality
+ * @param Township - Station's township
+ * @param line - Station's line
+ */
 struct Station{
 
     string name;

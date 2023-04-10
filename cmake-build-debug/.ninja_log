@@ -29,3 +29,9 @@
 19	1905	7028578927856612	CMakeFiles/Project1DA.dir/Menu.cpp.obj	bfae4769ace9b5ca
 27	2245	7028578931247548	CMakeFiles/Project1DA.dir/TrainNetwork.cpp.obj	e074b3c7bc1c137
 2246	2626	7028578935038804	Project1DA.exe	5f65fa0638f93e8f
+5	1372	7028583713202715	CMakeFiles/Project1DA.dir/main.cpp.obj	52bbce38b8f4d3a5
+21	1507	7028583714619354	CMakeFiles/Project1DA.dir/Menu.cpp.obj	bfae4769ace9b5ca
+70	1555	7028583715145797	CMakeFiles/Project1DA.dir/VertexEdge.cpp.obj	d2db5d94e983f706
+11	1942	7028583718738258	CMakeFiles/Project1DA.dir/Graph.cpp.obj	361c4673fdec44f5
+33	2230	7028583721886329	CMakeFiles/Project1DA.dir/TrainNetwork.cpp.obj	e074b3c7bc1c137
+2231	2762	7028583727108242	Project1DA.exe	5f65fa0638f93e8f
